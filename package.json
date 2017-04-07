@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"yaml",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "yaml",
+    "description": "api documentation for [yaml (v0.3.0)](https://github.com/tj/js-yaml) [![npm package](https://img.shields.io/npm/v/npmdoc-yaml.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-yaml) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-yaml.svg)](https://travis-ci.org/npmdoc/node-npmdoc-yaml)",
     "devDependencies": {
-        "yaml": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
-        "utility2": "kaizhu256/node-utility2#alpha"
+        "utility2": "kaizhu256/node-utility2#alpha",
+        "yaml": "*"
     },
-    "name":"npmdoc-yaml",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-yaml",
+    "keywords": [
+        "documentation",
+        "yaml"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_yaml.js",
+    "name": "npmdoc-yaml",
+    "nameAlias": "npmdoc_yaml",
+    "nameOriginal": "npmdoc-yaml",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-yaml"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
